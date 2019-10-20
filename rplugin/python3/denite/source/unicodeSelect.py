@@ -3,6 +3,7 @@
 
 from .base import Base
 
+import io
 import os.path
 
 class Source(Base):
@@ -20,7 +21,7 @@ class Source(Base):
             self.vim.out_write('"{}" not found!\n'.format(codeset_file))
             return []
 
-        with open(codeset_file) as f:
+        with io.open(codeset_file, encoding='utf-8') as f:
             return [
                 {
                     'word' : line,
